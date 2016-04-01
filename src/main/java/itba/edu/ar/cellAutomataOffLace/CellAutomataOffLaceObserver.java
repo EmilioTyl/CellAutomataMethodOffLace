@@ -10,6 +10,6 @@ public interface CellAutomataOffLaceObserver {
 
 	public void initialState(List<Particle> particles, int timeStep);
 
-	public void endSimulation();
+	public void endSimulationStep(List<Particle> particles);
 	
 }

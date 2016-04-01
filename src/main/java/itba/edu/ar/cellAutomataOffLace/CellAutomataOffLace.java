@@ -21,16 +21,16 @@ public class CellAutomataOffLace {
 	private String staticPath;
 	private String dynamicPath;
 	private int timeStep = 0;
-	private float interactionRadio;
-	private float radio;
+	private double interactionRadio;
+	private double radio;
 	private double length;
-	private float noise;
+	private double noise;
 	private Map<Particle, Double> newAngles = new HashMap<Particle, Double>();
 	private double deltaTime;
 	private List<CellAutomataOffLaceObserver> subscribers = new LinkedList<CellAutomataOffLaceObserver>();
 
 	public CellAutomataOffLace(int cellQuantity, String staticPath, String dynamicPath, int timeStep,
-			float interactionRadio, float radio, double length, float noise, double deltaTime) {
+			double interactionRadio, double radio, double length, double noise, double deltaTime) {
 		super();
 		this.cellQuantity = cellQuantity;
 		this.staticPath = staticPath;
@@ -43,7 +43,7 @@ public class CellAutomataOffLace {
 		this.deltaTime = deltaTime;
 	}
 
-	public void simulate(int times) throws InstantiationException, IllegalAccessException, IOException {
+	public void simulate(int frames) throws InstantiationException, IllegalAccessException, IOException {
 
 		IndexMatrix indexMatrix = IndexMatrixBuilder.getIndexMatrix(staticPath, dynamicPath, cellQuantity, timeStep);
 		particles = indexMatrix.getParticles();
@@ -52,8 +52,8 @@ public class CellAutomataOffLace {
 				new OptimizedRoute(cellQuantity, true, length), interactionRadio, radio);
 
 		notifyInitialState();
-		
-		for (int i = 0; i < times; i++) {
+
+		for (int i = 0; i < frames; i++) {
 
 			cellIndexMethod.execute();
 
@@ -61,26 +61,25 @@ public class CellAutomataOffLace {
 
 			timeStep++;
 			notifyFinishedStep();
-			
+
 			indexMatrix.clear();
 			indexMatrix.addParticles(particles);
 		}
-		
+
 		notifyEndSimulation();
 
 	}
-	
-	
+
 	private void notifyEndSimulation() {
 		for (CellAutomataOffLaceObserver subscriber : subscribers) {
-			subscriber.endSimulation();
+			subscriber.endSimulationStep(particles);
 		}
 	}
 
 	private void notifyInitialState() {
 		for (CellAutomataOffLaceObserver subscriber : subscribers) {
 			subscriber.initialState(particles, timeStep);
-		}		
+		}
 	}
 
 	private void notifyFinishedStep() {
@@ -113,7 +112,7 @@ public class CellAutomataOffLace {
 	private FloatPoint getDeltaFloatPoint(Particle particle) {
 		double angle = particle.getAngle();
 
-		return new FloatPoint(Math.sin(angle), Math.cos(angle)).multiply(particle.getVelocityAbs()).multiply(deltaTime);
+		return new FloatPoint(Math.cos(angle),Math.sin(angle)).multiply(particle.getVelocityAbs()).multiply(deltaTime);
 	}
 
 	private void fillNewAngle(Particle particle) {
@@ -130,7 +129,7 @@ public class CellAutomataOffLace {
 			cos += Math.cos(neightbour.getAngle());
 		}
 
-		return (Math.atan(sin / cos) + (Math.random() * noise - noise / 2));
+		return (Math.atan2(sin, cos) + (Math.random() * noise - noise / 2));
 	}
 
 	public void subscribe(CellAutomataOffLaceObserver subscriber) {

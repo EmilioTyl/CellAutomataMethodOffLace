@@ -1,5 +1,11 @@
 # Created by https://www.gitignore.io/api/eclipse,java,maven,osx,windows,linux
 
+###Project
+
+*.png
+*.jpg
+
+
 ### Eclipse ###
 
 .metadata

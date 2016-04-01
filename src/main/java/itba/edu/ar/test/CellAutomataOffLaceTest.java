@@ -15,14 +15,13 @@ public class CellAutomataOffLaceTest {
 	private float radio;
 	private String path;
 	private int timeStep;
-	private int cellQuantity;
 	private float interactionRadio;
-	private float noise;
+	private double noise;
 	private double deltaTime;
 	private int simulationTimes;
 
 	public CellAutomataOffLaceTest(double length, int particleQuantity, String path, float interactionRadio,
-			float noise, int simulationTimes) {
+			double noise, int simulationTimes) {
 		super();
 		this.length = length;
 		this.particleQuantity = particleQuantity;
@@ -33,7 +32,6 @@ public class CellAutomataOffLaceTest {
 		this.noise = noise;
 		this.deltaTime = 1;
 		this.simulationTimes = simulationTimes;
-		this.cellQuantity = getCellquantity();
 	}
 
 	private int getCellquantity() {
@@ -46,10 +44,10 @@ public class CellAutomataOffLaceTest {
 		List<String> dynamicPaths = new LinkedList<String>();
 
 		CellIndexMethodFileGenerator cmfg = new CellIndexMethodFileGenerator(length, particleQuantity, radio, path,
-				timeStep);
+				timeStep,0.03);
 		cmfg.generate(staticPaths, dynamicPaths);
 
-		CellAutomataOffLace caol = new CellAutomataOffLace(cellQuantity, staticPaths.get(0), dynamicPaths.get(0), timeStep,
+		CellAutomataOffLace caol = new CellAutomataOffLace(getCellquantity(), staticPaths.get(0), dynamicPaths.get(0), timeStep,
 				interactionRadio, radio, length, noise, deltaTime);
 		caol.subscribe(new FileOutputCellAutomataOffLace(path));
 		caol.simulate(simulationTimes);
@@ -59,7 +57,7 @@ public class CellAutomataOffLaceTest {
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, IOException {
 		String path = System.getProperty("user.dir")+"/";
 
-		(new CellAutomataOffLaceTest((float) 20, 400, path, 1, 2, 200)).start();
+		(new CellAutomataOffLaceTest((float) 20, 400, path, 1, 0.5, 400)).start();
 	}
 
 }
