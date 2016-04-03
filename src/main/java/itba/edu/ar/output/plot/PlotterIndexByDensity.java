@@ -26,11 +26,11 @@ public class PlotterIndexByDensity implements Plotter{
 		this.path = path;
 	}
 
-	public void finishedStep(List<Particle> particles, int timeStep) {
+	public void finishedStep(List<Particle> particles, int timeStep, double length) {
 		// TODO Auto-generated method stub
 	}
 
-	public void initialState(List<Particle> particles, int timeStep) {
+	public void initialState(List<Particle> particles, int timeStep, double length) {
 		// TODO Auto-generated method stub
 	}
 
