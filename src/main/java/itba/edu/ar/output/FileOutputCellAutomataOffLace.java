@@ -13,6 +13,7 @@ import itba.edu.ar.cellIndexMethod.data.particle.Particle;
 public class FileOutputCellAutomataOffLace implements CellAutomataOffLaceObserver {
 
 	private static final String SEPARATOR = " ";
+	private static final String COLUMNS_FILE = "Properties=id:I:1:pos:R:2:color:R:3:disp:R:2";
 	private String pathFolder;
 	private List<String> fileContent = new LinkedList<String>();
 
@@ -20,11 +21,13 @@ public class FileOutputCellAutomataOffLace implements CellAutomataOffLaceObserve
 		this.pathFolder = path;
 	}
 
-	public void finishedStep(List<Particle> particles, int timeStep) {
+	public void finishedStep(List<Particle> particles, int timeStep, double length) {
 
 		StringBuilder sb = new StringBuilder();
 		fileContent.add(particles.size() + "");
-		fileContent.add(timeStep + "");
+		
+		fileContent.add("Time="+timeStep+" "+sizeBox(length)+" "+COLUMNS_FILE);
+		
 		for (Particle particle : particles) {
 			sb.append(particle.getId()).append(SEPARATOR).append(particle.getPosition().getX()).append(SEPARATOR)
 					.append(particle.getPosition().getY()).append(SEPARATOR);
@@ -33,6 +36,14 @@ public class FileOutputCellAutomataOffLace implements CellAutomataOffLaceObserve
 			fileContent.add(sb.toString());
 			sb = new StringBuilder();
 		}
+	}
+
+	private String sizeBox(double length) {
+		String sizeX=length+" 0.00000000 0.00000000";
+		String sizeY="0.00000000 "+length+" 0.00000000";
+		String sizeZ="0.00000000 0.00000000 0.000000000000000001"; // sizeZ!=(0,0,0) for Ovito recognize the box size 
+		String sizeBox="Lattice=\""+sizeX+" "+sizeY+" "+sizeZ+"\"" ;
+		return sizeBox;
 	}
 
 	private void addColor(StringBuilder sb, Particle particle) {
@@ -51,8 +62,8 @@ public class FileOutputCellAutomataOffLace implements CellAutomataOffLaceObserve
 		return "cellAutomataOffLace";
 	}
 
-	public void initialState(List<Particle> particles, int timeStep) {
-		finishedStep(particles, timeStep);
+	public void initialState(List<Particle> particles, int timeStep, double length) {
+		finishedStep(particles, timeStep, length);
 	}
 
 	public void endSimulationStep(List<Particle> particles) {

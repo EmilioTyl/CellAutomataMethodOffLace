@@ -78,13 +78,13 @@ public class CellAutomataOffLace {
 
 	private void notifyInitialState() {
 		for (CellAutomataOffLaceObserver subscriber : subscribers) {
-			subscriber.initialState(particles, timeStep);
+			subscriber.initialState(particles, timeStep, length);
 		}
 	}
 
 	private void notifyFinishedStep() {
 		for (CellAutomataOffLaceObserver subscriber : subscribers) {
-			subscriber.finishedStep(particles, timeStep);
+			subscriber.finishedStep(particles, timeStep, length);
 		}
 	}
 
