@@ -10,13 +10,12 @@ import itba.edu.ar.output.plot.Plotter;
 public class CellAutomataOffLaceOrderIndexByNoise implements CellAutomataOffLaceOrderIndexData {
 
 	private static String path = System.getProperty("user.dir") + "/";
-	private static double length = 20;
 	private static int interactionRadio = 1;
-	private static int simulationTimes = 400;
+	private static int frames = 400;
 	private static double fromNoise = 0;
 	private static double stepNoise = 0.5;
 	private static double toNoise = 5;
-	private static List<Integer> particleQuantities = Arrays.asList((new Integer[] { 40, 100 }));
+	private static List<Integer> particleQuantities = Arrays.asList((new Integer[] { 40, 100,400,4000,10000}));
 	private static double density = 4;
 
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, IOException {
@@ -28,7 +27,7 @@ public class CellAutomataOffLaceOrderIndexByNoise implements CellAutomataOffLace
 
 		CellAutomataOffLaceOrderIndexData data = new CellAutomataOffLaceOrderIndexByNoise();
 		
-		(new CellAutomataOffLaceOrderIndex(simulationTimes, fromNoise, stepNoise,
+		(new CellAutomataOffLaceOrderIndex(frames, fromNoise, stepNoise,
 				toNoise, particleQuantities,data)).start();
 
 	}
@@ -46,28 +45,23 @@ public class CellAutomataOffLaceOrderIndexByNoise implements CellAutomataOffLace
 	}
 
 	public double getVelocityAbs() {
-		// TODO Auto-generated method stub
 		return 0.03;
 	}
 
 	public double getRadio() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	public String getPath() {
-		// TODO Auto-generated method stub
 		return path;
 	}
 
 	public int getTimeStep() {
-		// TODO Auto-generated method stub
 		return 1;
 	}
 
 	public double getInteractionRadio() {
-		// TODO Auto-generated method stub
-		return 1;
+		return interactionRadio;
 	}
 
 	public int getSimulationTimes() {

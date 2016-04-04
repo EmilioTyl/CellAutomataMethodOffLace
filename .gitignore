@@ -4,6 +4,7 @@
 
 *.png
 *.jpg
+!doc/IndexByNoise/*.png
 
 
 ### Eclipse ###
