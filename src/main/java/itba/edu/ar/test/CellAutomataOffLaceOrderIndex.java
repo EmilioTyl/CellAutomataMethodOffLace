@@ -22,12 +22,12 @@ public class CellAutomataOffLaceOrderIndex {
 	private List<Integer> particleQuantities;
 	private CellAutomataOffLaceOrderIndexData data;
 
-	public CellAutomataOffLaceOrderIndex(int simulationTimes, double fromNoise,
+	public CellAutomataOffLaceOrderIndex(int frames, double fromNoise,
 			double stepNoise, double toNoise, List<Integer> particleQuantities,
 			CellAutomataOffLaceOrderIndexData data) {
 		super();
 		this.deltaTime = 0;
-		this.frames = simulationTimes;
+		this.frames = frames;
 		this.fromNoise = fromNoise;
 		this.stepNoise = stepNoise;
 		this.toNoise = toNoise;
