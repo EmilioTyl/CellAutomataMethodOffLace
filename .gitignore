@@ -5,7 +5,8 @@
 *.png
 *.jpg
 !doc/IndexByNoise/*.png
-
+!doc/indexByDensity_40_simulation_times/*.png
+!doc/indexByDensity_100_simulation_times/*.png
 
 ### Eclipse ###
 
