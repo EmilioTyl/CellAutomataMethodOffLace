@@ -61,7 +61,6 @@ public class CellAutomataOffLaceOrderIndex {
 			for (double noise = fromNoise; noise < toNoise; noise += stepNoise) {
 				CellAutomataOffLace caol = new CellAutomataOffLace(getCellquantity(length), staticPaths.get(0),
 						dynamicPaths.get(0), data.getTimeStep(), interactionRadio, data.getRadio(), length, noise, deltaTime);
-
 				plotter.startSimulation(noise, density);
 
 				caol.subscribe(plotter);

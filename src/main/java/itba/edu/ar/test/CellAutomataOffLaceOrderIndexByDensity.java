@@ -14,9 +14,9 @@ public class CellAutomataOffLaceOrderIndexByDensity implements CellAutomataOffLa
 	private static double length = 20;
 	private static int interactionRadio = 1;
 	private static int frames = 150;
-	private static double fromNoise = 1;
-	private static double stepNoise = 1;
-	private static double toNoise = 2;
+	private static double fromNoise = 0.5;
+	private static double stepNoise = 0.5;
+	private static double toNoise = 1;
 	private static double fromDensity =1;
 	private static double stepDensity = 1;
 	private static double toDensity = 11;
