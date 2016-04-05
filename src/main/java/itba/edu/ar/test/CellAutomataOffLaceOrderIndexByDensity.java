@@ -9,7 +9,7 @@ import itba.edu.ar.output.plot.PlotterIndexByDensity;
 
 public class CellAutomataOffLaceOrderIndexByDensity implements CellAutomataOffLaceOrderIndexData {
 
-	private static final int simlationTimes = 40;
+	private static final int simlationTimes = 100;
 	private static String path = System.getProperty("user.dir") + "/";
 	private static double length = 20;
 	private static int interactionRadio = 1;
@@ -19,7 +19,7 @@ public class CellAutomataOffLaceOrderIndexByDensity implements CellAutomataOffLa
 	private static double toNoise = 2;
 	private static double fromDensity =1;
 	private static double stepDensity = 1;
-	private static double toDensity = 7;
+	private static double toDensity = 11;
 	
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, IOException {
 		indexByDensity();
