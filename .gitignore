@@ -7,7 +7,7 @@
 !doc/IndexByNoise/*.png
 !doc/indexByDensity_40_simulation_times/*.png
 !doc/indexByDensity_100_simulation_times/*.png
-
+!doc/indexByDensity_100_simulation_times_noise_05/*.png
 ### Eclipse ###
 
 .metadata
