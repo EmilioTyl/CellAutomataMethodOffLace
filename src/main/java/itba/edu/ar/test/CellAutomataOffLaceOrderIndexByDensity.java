@@ -13,13 +13,13 @@ public class CellAutomataOffLaceOrderIndexByDensity implements CellAutomataOffLa
 	private static String path = System.getProperty("user.dir") + "/";
 	private static double length = 20;
 	private static int interactionRadio = 1;
-	private static int frames = 150;
+	private static int frames = 200;
 	private static double fromNoise = 0.5;
 	private static double stepNoise = 0.5;
 	private static double toNoise = 1;
 	private static double fromDensity =1;
-	private static double stepDensity = 1;
-	private static double toDensity = 11;
+	private static double stepDensity = 0.2;
+	private static double toDensity = 2;
 	
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, IOException {
 		indexByDensity();

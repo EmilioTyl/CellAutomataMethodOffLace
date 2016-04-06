@@ -116,11 +116,12 @@ public class CellAutomataOffLace {
 	}
 
 	private void fillNewAngle(Particle particle) {
-		double newAngle = getNewAngle(particle.getNeightbours());
+		double newAngle = getNewAngle(particle);
 		newAngles.put(particle, newAngle);
 	}
 
-	private double getNewAngle(Set<Particle> neightbours) {
+	private double getNewAngle(Particle particle) {
+		Set<Particle> neightbours = particle.getNeightbours();
 		float sin = 0;
 		float cos = 0;
 
@@ -128,6 +129,10 @@ public class CellAutomataOffLace {
 			sin += Math.sin(neightbour.getAngle());
 			cos += Math.cos(neightbour.getAngle());
 		}
+		
+		sin += Math.sin(particle.getAngle());
+		cos += Math.cos(particle.getAngle());
+	
 
 		return (Math.atan2(sin, cos) + (Math.random() * noise - noise / 2));
 	}
