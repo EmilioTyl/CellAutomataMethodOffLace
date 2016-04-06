@@ -57,7 +57,7 @@ public class CellAutomataOffLaceTest {
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, IOException {
 		String path = System.getProperty("user.dir")+"/";
 
-		(new CellAutomataOffLaceTest((float) 20, 400, path, 1, 0.5, 400)).start();
+		(new CellAutomataOffLaceTest( 20, 80, path, 1, 0.2, 400)).start();
 	}
 
 }

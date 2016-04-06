@@ -9,12 +9,13 @@ import itba.edu.ar.output.plot.Plotter;
 
 public class CellAutomataOffLaceOrderIndexByNoise implements CellAutomataOffLaceOrderIndexData {
 
+	private static final int _simulationTimes = 100;
 	private static String path = System.getProperty("user.dir") + "/";
 	private static int interactionRadio = 1;
-	private static int frames = 400;
+	private static int frames = 4000;
 	private static double fromNoise = 0;
 	private static double stepNoise = 0.5;
-	private static double toNoise = 5;
+	private static double toNoise = 5.5;
 	private static List<Integer> particleQuantities = Arrays.asList((new Integer[] { 40, 100,400,4000,10000}));
 	private static double density = 4;
 
@@ -65,7 +66,7 @@ public class CellAutomataOffLaceOrderIndexByNoise implements CellAutomataOffLace
 	}
 
 	public int getSimulationTimes() {
-		return 3;
+		return _simulationTimes;
 	}
 
 }

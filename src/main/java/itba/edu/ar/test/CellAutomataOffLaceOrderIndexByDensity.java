@@ -13,7 +13,7 @@ public class CellAutomataOffLaceOrderIndexByDensity implements CellAutomataOffLa
 	private static String path = System.getProperty("user.dir") + "/";
 	private static double length = 20;
 	private static int interactionRadio = 1;
-	private static int frames = 150;
+	private static int frames = 4000;
 	private static double fromNoise = 0.5;
 	private static double stepNoise = 0.5;
 	private static double toNoise = 1;
