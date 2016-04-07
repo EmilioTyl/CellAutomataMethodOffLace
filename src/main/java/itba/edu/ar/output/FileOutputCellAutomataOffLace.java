@@ -47,8 +47,11 @@ public class FileOutputCellAutomataOffLace implements CellAutomataOffLaceObserve
 	}
 
 	private void addColor(StringBuilder sb, Particle particle) {
-		sb.append(Math.abs(Math.cos(particle.getAngle())) + SEPARATOR + Math.abs(Math.sin(particle.getAngle()))
+		sb.append(colorRange(Math.cos(particle.getAngle())) + SEPARATOR + colorRange(Math.sin(particle.getAngle()))
 				+ SEPARATOR + 1 + SEPARATOR);
+	}
+	private double colorRange( double color){
+		return color/2 + 0.5;
 	}
 
 	private void addDisplacementVector(StringBuilder sb,Particle particle ){
