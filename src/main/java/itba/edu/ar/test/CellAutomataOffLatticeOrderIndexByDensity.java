@@ -7,9 +7,9 @@ import java.util.List;
 import itba.edu.ar.output.plot.Plotter;
 import itba.edu.ar.output.plot.PlotterIndexByDensity;
 
-public class CellAutomataOffLaceOrderIndexByDensity implements CellAutomataOffLaceOrderIndexData {
+public class CellAutomataOffLatticeOrderIndexByDensity implements CellAutomataOffLatticeOrderIndexData {
 
-	private static final int simlationTimes = 100;
+	private static final int simlationTimes = 20;
 	private static String path = System.getProperty("user.dir") + "/";
 	private static double length = 20;
 	private static int interactionRadio = 1;
@@ -17,22 +17,21 @@ public class CellAutomataOffLaceOrderIndexByDensity implements CellAutomataOffLa
 	private static double fromNoise = 0.5;
 	private static double stepNoise = 0.5;
 	private static double toNoise = 1;
-	private static double fromDensity =1;
+	private static double fromDensity = 1;
 	private static double stepDensity = 1;
 	private static double toDensity = 11;
-	
+
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, IOException {
 		indexByDensity();
 	}
 
 	public static void indexByDensity() throws InstantiationException, IllegalAccessException, IOException {
 
-		CellAutomataOffLaceOrderIndexByDensity data = new CellAutomataOffLaceOrderIndexByDensity();
+		CellAutomataOffLatticeOrderIndexByDensity data = new CellAutomataOffLatticeOrderIndexByDensity();
 
 		List<Integer> particleQuantities = getParticleQuantities(fromDensity, stepDensity, toDensity, length);
 
-		(new CellAutomataOffLaceOrderIndex( frames, fromNoise, stepNoise, toNoise,
-				particleQuantities, data)).start();
+		(new CellAutomataOffLatticeOrderIndex(frames, fromNoise, stepNoise, toNoise, particleQuantities, data)).start();
 	}
 
 	private static List<Integer> getParticleQuantities(double fromDensity, double stepDensity, double toDensity,
@@ -43,8 +42,6 @@ public class CellAutomataOffLaceOrderIndexByDensity implements CellAutomataOffLa
 		}
 		return ans;
 	}
-	
-	
 
 	private static int getParticleQuantity(double density, double length) {
 		return (int) Math.floor(density * Math.pow(length, 2));
@@ -57,8 +54,8 @@ public class CellAutomataOffLaceOrderIndexByDensity implements CellAutomataOffLa
 	public Plotter getPlotter() {
 		return new PlotterIndexByDensity(path);
 	}
-	
-	public double getLength(int particleQuantity){
+
+	public double getLength(int particleQuantity) {
 		return length;
 	}
 

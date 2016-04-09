@@ -2,7 +2,7 @@ package itba.edu.ar.test;
 
 import itba.edu.ar.output.plot.Plotter;
 
-public interface CellAutomataOffLaceOrderIndexData {
+public interface CellAutomataOffLatticeOrderIndexData {
 
 	public double getDensity(int particleQuantity) ;
 	

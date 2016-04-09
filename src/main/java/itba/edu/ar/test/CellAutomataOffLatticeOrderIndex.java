@@ -1,16 +1,14 @@
 package itba.edu.ar.test;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-import itba.edu.ar.cellAutomataOffLace.CellAutomataOffLace;
+import itba.edu.ar.cellAutomataOffLattice.CellAutomataOffLattice;
 import itba.edu.ar.input.file.CellIndexMethodFileGenerator;
-import itba.edu.ar.output.plot.PlotIndexByNoise;
 import itba.edu.ar.output.plot.Plotter;
 
-public class CellAutomataOffLaceOrderIndex {
+public class CellAutomataOffLatticeOrderIndex {
 
 	private double deltaTime;
 	private int frames;
@@ -20,11 +18,11 @@ public class CellAutomataOffLaceOrderIndex {
 	private double toNoise;
 
 	private List<Integer> particleQuantities;
-	private CellAutomataOffLaceOrderIndexData data;
+	private CellAutomataOffLatticeOrderIndexData data;
 
-	public CellAutomataOffLaceOrderIndex(int frames, double fromNoise,
+	public CellAutomataOffLatticeOrderIndex(int frames, double fromNoise,
 			double stepNoise, double toNoise, List<Integer> particleQuantities,
-			CellAutomataOffLaceOrderIndexData data) {
+			CellAutomataOffLatticeOrderIndexData data) {
 		super();
 		this.deltaTime = 0;
 		this.frames = frames;
@@ -59,7 +57,7 @@ public class CellAutomataOffLaceOrderIndex {
 			cmfg.generate(staticPaths, dynamicPaths);
 
 			for (double noise = fromNoise; noise < toNoise; noise += stepNoise) {
-				CellAutomataOffLace caol = new CellAutomataOffLace(getCellquantity(length), staticPaths.get(0),
+				CellAutomataOffLattice caol = new CellAutomataOffLattice(getCellquantity(length), staticPaths.get(0),
 						dynamicPaths.get(0), data.getTimeStep(), interactionRadio, data.getRadio(), length, noise, deltaTime);
 				plotter.startSimulation(noise, density);
 

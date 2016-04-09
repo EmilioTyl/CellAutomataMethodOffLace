@@ -10,7 +10,7 @@ import org.knowm.xchart.XYChart;
 import org.knowm.xchart.XYChartBuilder;
 import org.knowm.xchart.style.Styler.LegendPosition;
 
-import itba.edu.ar.cellAutomataOffLace.CellAutomataOffLaceObserver;
+import itba.edu.ar.cellAutomataOffLattice.CellAutomataOffLatticeObserver;
 import itba.edu.ar.cellIndexMethod.data.particle.FloatPoint;
 import itba.edu.ar.cellIndexMethod.data.particle.Particle;
 

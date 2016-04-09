@@ -7,17 +7,17 @@ import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
 
-import itba.edu.ar.cellAutomataOffLace.CellAutomataOffLaceObserver;
+import itba.edu.ar.cellAutomataOffLattice.CellAutomataOffLatticeObserver;
 import itba.edu.ar.cellIndexMethod.data.particle.Particle;
 
-public class FileOutputCellAutomataOffLace implements CellAutomataOffLaceObserver {
+public class FileOutputCellAutomataOffLattice implements CellAutomataOffLatticeObserver {
 
 	private static final String SEPARATOR = " ";
 	private static final String COLUMNS_FILE = "Properties=id:I:1:pos:R:2:color:R:3:disp:R:2";
 	private String pathFolder;
 	private List<String> fileContent = new LinkedList<String>();
 
-	public FileOutputCellAutomataOffLace(String path) {
+	public FileOutputCellAutomataOffLattice(String path) {
 		this.pathFolder = path;
 	}
 

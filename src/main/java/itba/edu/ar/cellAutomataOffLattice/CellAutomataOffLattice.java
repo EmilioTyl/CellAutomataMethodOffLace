@@ -1,4 +1,4 @@
-package itba.edu.ar.cellAutomataOffLace;
+package itba.edu.ar.cellAutomataOffLattice;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -14,7 +14,7 @@ import itba.edu.ar.cellIndexMethod.data.particle.FloatPoint;
 import itba.edu.ar.cellIndexMethod.data.particle.Particle;
 import itba.edu.ar.cellIndexMethod.route.routeImpl.OptimizedRoute;
 
-public class CellAutomataOffLace {
+public class CellAutomataOffLattice {
 
 	private List<Particle> particles;
 	private int cellQuantity;
@@ -27,9 +27,9 @@ public class CellAutomataOffLace {
 	private double noise;
 	private Map<Particle, Double> newAngles = new HashMap<Particle, Double>();
 	private double deltaTime;
-	private List<CellAutomataOffLaceObserver> subscribers = new LinkedList<CellAutomataOffLaceObserver>();
+	private List<CellAutomataOffLatticeObserver> subscribers = new LinkedList<CellAutomataOffLatticeObserver>();
 
-	public CellAutomataOffLace(int cellQuantity, String staticPath, String dynamicPath, int timeStep,
+	public CellAutomataOffLattice(int cellQuantity, String staticPath, String dynamicPath, int timeStep,
 			double interactionRadio, double radio, double length, double noise, double deltaTime) {
 		super();
 		this.cellQuantity = cellQuantity;
@@ -71,19 +71,19 @@ public class CellAutomataOffLace {
 	}
 
 	private void notifyEndSimulation() {
-		for (CellAutomataOffLaceObserver subscriber : subscribers) {
+		for (CellAutomataOffLatticeObserver subscriber : subscribers) {
 			subscriber.endSimulationStep(particles);
 		}
 	}
 
 	private void notifyInitialState() {
-		for (CellAutomataOffLaceObserver subscriber : subscribers) {
+		for (CellAutomataOffLatticeObserver subscriber : subscribers) {
 			subscriber.initialState(particles, timeStep, length);
 		}
 	}
 
 	private void notifyFinishedStep() {
-		for (CellAutomataOffLaceObserver subscriber : subscribers) {
+		for (CellAutomataOffLatticeObserver subscriber : subscribers) {
 			subscriber.finishedStep(particles, timeStep, length);
 		}
 	}
@@ -137,7 +137,7 @@ public class CellAutomataOffLace {
 		return (Math.atan2(sin, cos) + (Math.random() * noise - noise / 2));
 	}
 
-	public void subscribe(CellAutomataOffLaceObserver subscriber) {
+	public void subscribe(CellAutomataOffLatticeObserver subscriber) {
 		subscribers.add(subscriber);
 	}
 

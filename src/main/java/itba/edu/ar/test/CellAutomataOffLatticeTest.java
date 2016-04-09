@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-import itba.edu.ar.cellAutomataOffLace.CellAutomataOffLace;
+import itba.edu.ar.cellAutomataOffLattice.CellAutomataOffLattice;
 import itba.edu.ar.input.file.CellIndexMethodFileGenerator;
-import itba.edu.ar.output.FileOutputCellAutomataOffLace;
+import itba.edu.ar.output.FileOutputCellAutomataOffLattice;
 
-public class CellAutomataOffLaceTest {
+public class CellAutomataOffLatticeTest {
 
 	private double length;
 	private int particleQuantity;
@@ -20,7 +20,7 @@ public class CellAutomataOffLaceTest {
 	private double deltaTime;
 	private int simulationTimes;
 
-	public CellAutomataOffLaceTest(double length, int particleQuantity, String path, float interactionRadio,
+	public CellAutomataOffLatticeTest(double length, int particleQuantity, String path, float interactionRadio,
 			double noise, int simulationTimes) {
 		super();
 		this.length = length;
@@ -47,9 +47,9 @@ public class CellAutomataOffLaceTest {
 				timeStep,0.03);
 		cmfg.generate(staticPaths, dynamicPaths);
 
-		CellAutomataOffLace caol = new CellAutomataOffLace(getCellquantity(), staticPaths.get(0), dynamicPaths.get(0), timeStep,
+		CellAutomataOffLattice caol = new CellAutomataOffLattice(getCellquantity(), staticPaths.get(0), dynamicPaths.get(0), timeStep,
 				interactionRadio, radio, length, noise, deltaTime);
-		caol.subscribe(new FileOutputCellAutomataOffLace(path));
+		caol.subscribe(new FileOutputCellAutomataOffLattice(path));
 		caol.simulate(simulationTimes);
 
 	}
@@ -57,7 +57,7 @@ public class CellAutomataOffLaceTest {
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, IOException {
 		String path = System.getProperty("user.dir")+"/";
 
-		(new CellAutomataOffLaceTest( 20, 800, path, 1, 0.2, 400)).start();
+		(new CellAutomataOffLatticeTest( 20, 800, path, 1, 0.2, 400)).start();
 	}
 
 }
