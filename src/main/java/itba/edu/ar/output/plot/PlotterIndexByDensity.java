@@ -13,35 +13,32 @@ import org.knowm.xchart.style.Styler.LegendPosition;
 import itba.edu.ar.cellIndexMethod.data.particle.FloatPoint;
 import itba.edu.ar.cellIndexMethod.data.particle.Particle;
 
-public class PlotterIndexByDensity implements Plotter{
+public class PlotterIndexByDensity implements Plotter {
 
 	private double noise;
 	private Double density;
 	private List<Double> densities = new LinkedList<Double>();
 	private List<Double> indexes = new LinkedList<Double>();
 	private String path;
-	private double indexAverage=0;
+	private double indexAverage = 0;
 
 	public PlotterIndexByDensity(String path) {
 		this.path = path;
 	}
 
 	public void finishedStep(List<Particle> particles, int timeStep, double length) {
-		// TODO Auto-generated method stub
 	}
 
 	public void initialState(List<Particle> particles, int timeStep, double length) {
-		// TODO Auto-generated method stub
 	}
 
 	public void setParticleQuantity(Integer particleQuantity) {
 	}
 
-	public void startSimulation(double noise,double density) {
+	public void startSimulation(double noise, double density) {
 		this.noise = noise;
-		this.density=density;
+		this.density = density;
 	}
-
 
 	private double getConstantVelocityAbs(List<Particle> particles) {
 		return particles.get(0).getVelocityAbs();
@@ -84,20 +81,20 @@ public class PlotterIndexByDensity implements Plotter{
 
 		Double index = abs / (particles.size() * getConstantVelocityAbs(particles));
 
-		indexAverage += index; 
-		
+		indexAverage += index;
+
 	}
 
 	public void endParticleQuantityStep() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void endSimulation(int simulationTimes) {
 
-		indexes.add(indexAverage/simulationTimes);
+		indexes.add(indexAverage / simulationTimes);
 		densities.add(density);
-		indexAverage=0;
+		indexAverage = 0;
 	}
 
 }
